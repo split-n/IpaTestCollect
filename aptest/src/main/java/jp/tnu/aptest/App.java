@@ -1,19 +1,16 @@
 package jp.tnu.aptest;
 
-import org.apache.pdfbox.*;
+import java.io.*;
 
-/**
- * Hello world!
- *
- */
+import org.apache.pdfbox.pdfparser.*;
+import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.util.*;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-    }
-    
-    public String readPdfText() {
-    	return "not impl";
+		
+
     }
 }

@@ -31,4 +31,8 @@ public class AnswerCollecter {
 
 		return result;
 	}
+	
+	public String getAsText() {
+		return asText;
+	}
 }
