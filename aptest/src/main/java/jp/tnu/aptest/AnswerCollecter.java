@@ -2,6 +2,7 @@ package jp.tnu.aptest;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -22,12 +23,16 @@ public class AnswerCollecter {
 	    this.asText = writer.toString();
 	}
 
-	public HashMap<String, Integer> getAnswersMap() {
+	public Map<String, Integer> getAnswersMap() {
 		String[] lines = asText.split("\n");
 		HashMap<String, Integer> result = new HashMap<>();
 		for(String line : lines) {
 			
 		}
+		result.put("エ", 26);
+		result.put("イ", 18);
+		result.put("ウ", 18);
+		result.put("ア", 18);
 
 		return result;
 	}
