@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class AnswerCollecterTest {
 	@Test
 	public void testGetAnswersMap() {
 		AnswerCollecter coll = createInstance("/2013h25a_ap_am_ans.pdf");
-		Map<String, Integer> actual = coll.getAnswersMap();
+		Map<String, Integer> actual = coll.getAnswersCountMap();
 		Map<String, Integer> expected = new HashMap<>();
 		expected.put("ア", 18);
 		expected.put("イ", 18);
