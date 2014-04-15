@@ -31,5 +31,10 @@
     	<artifactId>bcprov-ext-jdk15on</artifactId>
     	<version>1.50</version>
     </dependency>
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.3.3</version>
+    </dependency>
   </dependencies>
 </project>
