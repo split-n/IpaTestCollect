@@ -69,4 +69,8 @@ public class AnswerCollecter {
 	public String getAsText() {
 		return asText;
 	}
+	
+	public ArrayList<String> getAsList() {
+		return asList;
+	}
 }

@@ -4,8 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -35,6 +34,17 @@ public class AnswerCollecterTest {
 		assertTrue(text.contains("エ"));
 	}
 	
+	@Test
+	public void testGetAsList() {
+		String[] expected = "アアエエイエイイウエイウアアエアイアエウアウエイエウウアイエイエイアエウアエエウエアウイアアイエエエエイエウアイウアウウエウイイイイエウウエエエウウアエアイエア".split("");
+		expected[0] = null;
+		// first is null
+
+		AnswerCollecter coll = createInstance("/2013h25a_ap_am_ans.pdf");
+		List<String> actual = coll.getAsList();
+		assertArrayEquals(expected, actual.toArray());
+	}
+
 	public AnswerCollecter createInstance(String testTargetFileName) {
 		AnswerCollecter coll = null;
 		String pdfPath = getClass().getResource(testTargetFileName).getPath();
