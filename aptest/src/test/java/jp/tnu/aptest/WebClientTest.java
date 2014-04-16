@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import org.apache.http.client.ClientProtocolException;
-import org.bouncycastle.asn1.x509.qualified.TypeOfBiometricData;
 import org.junit.Test;
 
 public class WebClientTest {
