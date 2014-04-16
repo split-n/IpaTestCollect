@@ -5,9 +5,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.Map.Entry;
+
 
 public class App 
 {
@@ -39,8 +39,9 @@ public class App
     		}
 	    	System.out.println("use : " + url);
     	}
-	    
-	    for(Map.Entry<String, Integer> result : answers.collectAllAnswersCount().entrySet()) {
+
+	    TreeMap<String, Integer> collected = new TreeMap<>(answers.collectAllAnswersCount()); 
+	    for(Map.Entry<String, Integer> result : collected.entrySet()) {
 	    	System.out.println(result.getKey() + " => " + result.getValue() + "回");
 	    }
     }
