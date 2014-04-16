@@ -1,9 +1,6 @@
 package jp.tnu.aptest;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.io.*;
-import java.util.regex.*;
 import java.util.*;
 
 import org.apache.pdfbox.pdfparser.PDFParser;
@@ -12,7 +9,6 @@ import org.apache.pdfbox.util.PDFTextStripper;
 
 public class AnswerPaper {
 	public static final String[] VALID_ANSWERS = "ア イ ウ エ".split(" ");
-    public static final Pattern ANSWER_FORMAT = Pattern.compile("^問 (?<qnum>\\d+) (?<answer>(ア|イ|ウ|エ))$"); 
 
 	private String asText;
 	private ArrayList<String> asList;
@@ -42,7 +38,7 @@ public class AnswerPaper {
 			line = line.trim();
 			String[] splitted = line.split("\\s+");
 			if(!(splitted[0].equals("問"))) continue;
-			
+
 			int qnum = 0;
 			String ans = null;
 			for(int i=0;i<splitted.length;i++){
@@ -77,7 +73,7 @@ public class AnswerPaper {
 			if(answer != null)
 				result.put(answer, result.get(answer) + 1);
 		}
-	
+
 		this.answersCountMap = result;
 	}
 
