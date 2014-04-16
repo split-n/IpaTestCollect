@@ -11,13 +11,26 @@ import org.junit.Test;
 public class AnswerPaperTest {
 
 	@Test
-	public void testGetAnswersMap() {
+	public void testGetAnswersMap1() {
 		AnswerPaper coll = createInstance("/2013h25a_ap_am_ans.pdf");
 		Map<String, Integer> actual = coll.getAnswersCountMap();
 		Map<String, Integer> expected = new HashMap<>();
 		expected.put("ア", 18);
 		expected.put("イ", 18);
 		expected.put("ウ", 18);
+		expected.put("エ", 26);
+		assertArrayEquals(
+				expected.entrySet().toArray(),actual.entrySet().toArray() );
+	}
+	
+	@Test
+	public void testGetAnswersMap2() {
+		AnswerPaper coll = createInstance("/2009h21h_fe_am_ans.pdf");
+		Map<String, Integer> actual = coll.getAnswersCountMap();
+		Map<String, Integer> expected = new HashMap<>();
+		expected.put("ア", 19);
+		expected.put("イ", 14);
+		expected.put("ウ", 21);
 		expected.put("エ", 26);
 		assertArrayEquals(
 				expected.entrySet().toArray(),actual.entrySet().toArray() );
