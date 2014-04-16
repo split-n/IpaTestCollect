@@ -43,10 +43,6 @@ public class AnswerPaper {
 			String ans = null;
 			for(int i=0;i<splitted.length;i++){
 				switch(i%3) {
-				case 0: // "問"
-					qnum = 0;
-					ans = null;
-					break;
 				case 1: // 問番号
 					qnum = Integer.valueOf(splitted[i]);
 					break;
@@ -56,6 +52,8 @@ public class AnswerPaper {
 				}
 				if(qnum != 0 && ans != null) {
 					answers[qnum] = ans;
+					qnum = 0;
+					ans = null;
 				}
 			}
 		}
