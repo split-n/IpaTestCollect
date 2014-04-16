@@ -24,6 +24,8 @@ public class AnswerPaper {
 	    writer.flush();
 	    this.asText = writer.toString();
 
+        pdf.close();
+
 	    makeAnswersList();
 	    makeAnswersCountMap();
 	}
