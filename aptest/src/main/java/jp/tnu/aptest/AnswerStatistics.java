@@ -27,4 +27,8 @@ public class AnswerStatistics {
 
 		return result;
 	}
+	
+	public List<AnswerPaper> getAnswers() {
+		return answers;
+	}
 }
