@@ -13,14 +13,14 @@ public class WebClientTest {
 
 	@Test
 	public void download() throws IOException {
-		String expectedFilePath = getClass().getResource("/examplecom.html").getPath();
+		String expectedFilePath = getClass().getResource("/2013h25a_ap_am_ans.pdf").getPath();
 		char[] expected = null;
 		try(FileInputStream is = new FileInputStream(expectedFilePath)) {
 			expected = readStreamAll(is);
 		}
 		
 		WebClient wc = new WebClient();
-		try(InputStream stream = wc.getStream("http://example.com/")) {
+		try(InputStream stream = wc.getStream("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2013h25_2/2013h25a_ap_am_ans.pdf")) {
 			char[] data = readStreamAll(stream);
 			assertArrayEquals(expected, data);
 		}
