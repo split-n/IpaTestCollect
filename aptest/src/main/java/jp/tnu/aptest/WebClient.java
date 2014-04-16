@@ -11,7 +11,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 
 public class WebClient {
-	private String userAgent = "";
 	private HttpClient client;
 	public WebClient() {
 		this.client = HttpClientBuilder.create().build();

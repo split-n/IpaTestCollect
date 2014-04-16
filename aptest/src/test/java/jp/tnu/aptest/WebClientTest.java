@@ -14,21 +14,17 @@ import org.junit.Test;
 public class WebClientTest {
 
 	@Test
-	public void download() {
+	public void download() throws IOException {
 		String expectedFilePath = getClass().getResource("/examplecom.html").getPath();
 		char[] expected = null;
 		try(FileInputStream is = new FileInputStream(expectedFilePath)) {
 			expected = readStreamAll(is);
-		}catch(IOException ex) {
-			fail(ex.toString());
 		}
 		
 		WebClient wc = new WebClient();
 		try(InputStream stream = wc.getStream("http://example.com/")) {
 			char[] data = readStreamAll(stream);
 			assertArrayEquals(expected, data);
-		}catch(IOException ex) {
-			fail(ex.toString());
 		}
 	}
 	
@@ -40,7 +36,7 @@ public class WebClientTest {
 			data.add((char)buf);
 		}
 
-		// return data.toArray(new Character[0]);
+		// meaning: return data.toArray(new Character[0]);
 		
 		int len = data.size();
 		char[] result = new char[len];
