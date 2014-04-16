@@ -8,7 +8,7 @@ import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
 
-public class AnswerCollecter {
+public class AnswerCollector {
 	public static final String[] VALID_ANSWERS = "ア イ ウ エ".split(" ");
     public static final Pattern ANSWER_FORMAT = Pattern.compile("^問 (?<qnum>\\d+) (?<answer>(ア|イ|ウ|エ))$"); 
 
@@ -16,7 +16,7 @@ public class AnswerCollecter {
 	private ArrayList<String> asList;
 	private Map<String,Integer> answersCountMap;
 
-	public AnswerCollecter(InputStream pdfFileStream) throws IOException {
+	public AnswerCollector(InputStream pdfFileStream) throws IOException {
 		PDFParser pdfParser = new PDFParser(pdfFileStream);
 		pdfParser.parse();
 		PDDocument pdf = pdfParser.getPDDocument();
