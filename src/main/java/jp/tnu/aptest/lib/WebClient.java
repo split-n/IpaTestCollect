@@ -6,6 +6,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -20,6 +21,6 @@ public class WebClient {
 		HttpGet request = new HttpGet(uri);
 		HttpResponse response = client.execute(request);
 		HttpEntity entity = response.getEntity();
-		return entity.getContent();
+		return new BufferedInputStream(entity.getContent());
 	}
 }
