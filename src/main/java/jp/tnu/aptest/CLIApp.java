@@ -1,5 +1,9 @@
 package jp.tnu.aptest;
 
+import jp.tnu.aptest.lib.AnswerPaper;
+import jp.tnu.aptest.lib.AnswerStatistics;
+import jp.tnu.aptest.lib.WebClient;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -11,23 +15,20 @@ import java.util.*;
 public class CLIApp
 {
     public static void main( String[] args ) {
-    	List<String> urls= new ArrayList<>();
-    	if(args.length != 0) { // use pdf url list if arg present
+    	List<String> urls= null;
+    	if(args.length == 1) { // use pdf url list if arg present
     		try{
     			urls = parseUrlsFromFilePath(args[0]);
-    		}catch(IllegalArgumentException e) {
+    		}catch(IOException e) {
     			e.printStackTrace();
     			System.exit(1);
     		}
-    	} else { // use preset if no arg present
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2013h25_2/2013h25a_ap_am_ans.pdf");
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2013h25_1/2013h25h_ap_am_ans.pdf");
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2012h24_2/2012h24a_ap_am_ans.pdf");
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2012h24_1/2012h24h_ap_am_ans.pdf");
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2011h23_2/2011h23a_ap_am_ans.pdf");
-    		urls.add("http://www.jitec.ipa.go.jp/1_04hanni_sukiru/mondai_kaitou_2011h23_1/2011h23tokubetsu_ap_am_ans.pdf");
-    	}
-    	
+    	} else {
+			System.err.println("invalid arguament");
+			System.exit(1);
+		}
+
+
     	WebClient wc = new WebClient();
     	AnswerStatistics answers = new AnswerStatistics();
 	    for (String url : urls) {
@@ -50,15 +51,11 @@ public class CLIApp
 	    }
     }
     
-    private static List<String> parseUrlsFromFilePath(String path) {
+    private static List<String> parseUrlsFromFilePath(String path) throws IOException{
     	Path pdfUrlsListPath = Paths.get(path);
     	List<String> urls = null;
-    	try {
-			urls = Files.readAllLines(pdfUrlsListPath, Charset.defaultCharset());
-		} catch (IOException e) {
-			throw new IllegalArgumentException();
-		}
-    	
-    	return urls;
+		urls = Files.readAllLines(pdfUrlsListPath, Charset.defaultCharset());
+
+		return urls;
     }
 }

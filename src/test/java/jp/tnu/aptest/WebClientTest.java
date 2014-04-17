@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import jp.tnu.aptest.lib.WebClient;
 import org.junit.Test;
 
 public class WebClientTest {

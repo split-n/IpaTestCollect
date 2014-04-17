@@ -1,4 +1,4 @@
-package jp.tnu.aptest;
+package jp.tnu.aptest.lib;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

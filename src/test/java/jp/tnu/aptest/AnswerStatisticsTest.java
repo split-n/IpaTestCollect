@@ -1,5 +1,7 @@
 package jp.tnu.aptest;
 
+import jp.tnu.aptest.lib.AnswerPaper;
+import jp.tnu.aptest.lib.AnswerStatistics;
 import org.junit.Test;
 
 import java.io.FileInputStream;

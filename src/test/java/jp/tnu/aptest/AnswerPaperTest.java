@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
+import jp.tnu.aptest.lib.AnswerPaper;
 import org.junit.Test;
 
 public class AnswerPaperTest {

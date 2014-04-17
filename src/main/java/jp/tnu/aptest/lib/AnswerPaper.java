@@ -1,4 +1,4 @@
-package jp.tnu.aptest;
+package jp.tnu.aptest.lib;
 
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;

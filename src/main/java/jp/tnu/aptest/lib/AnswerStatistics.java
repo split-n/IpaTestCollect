@@ -1,10 +1,10 @@
-package jp.tnu.aptest;
+package jp.tnu.aptest.lib;
 
 import java.util.*;
 
 public class AnswerStatistics {
 	private List<AnswerPaper> answers = new ArrayList<>();
-	
+
 	public void addAnswer(AnswerPaper paper) {
 		answers.add(paper);
 	}
