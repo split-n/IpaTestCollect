@@ -27,29 +27,37 @@ public class CLIApp
 			System.err.println("invalid arguament");
 			System.exit(1);
 		}
-
-
+		
     	WebClient wc = new WebClient();
     	AnswerStatistics answers = new AnswerStatistics();
 	    for (String url : urls) {
 	    	try(InputStream file = wc.getStream(url)){
-			answers.addAnswer(new AnswerPaper(file));
+				AnswerPaper paper = new AnswerPaper(file);
+				System.out.println("target : " + url.substring(url.lastIndexOf("/")));
+				printCollectedResult(paper.getAnswersCountMap());
+				System.out.println("----");
+				answers.addAnswer(paper);
     		}catch(IOException e) {
-    			System.out.println("failed to analyze : " + url);
+				e.printStackTrace();
     		}
-	    	System.out.println("use : " + url);
     	}
 
 	    TreeMap<String, Integer> collected = new TreeMap<>(answers.collectAllAnswersCount());
+		System.out.println("sum : ");
+		printCollectedResult(collected);
+
+    }
+
+	private static void printCollectedResult(Map<String,Integer> collected) {
 		int sum = 0;
 		for(int part : collected.values()){
 			sum += part;
 		}
-	    for(Map.Entry<String, Integer> result : collected.entrySet()) {
-	    	System.out.print(result.getKey() + " => " + result.getValue() + "回/");
+		for(Map.Entry<String, Integer> result : collected.entrySet()) {
+			System.out.print(result.getKey() + " => " + result.getValue() + "回/");
 			System.out.println(String.format("%.1f",(double)result.getValue()/sum*100) + "%");
-	    }
-    }
+		}
+	}
     
     private static List<String> parseUrlsFromFilePath(String path) throws IOException{
     	Path pdfUrlsListPath = Paths.get(path);
