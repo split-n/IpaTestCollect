@@ -1,11 +1,11 @@
 package jp.tnu.aptest;
 
-import java.io.*;
-import java.util.*;
-
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
+
+import java.io.*;
+import java.util.*;
 
 public class AnswerPaper {
 	public static final String[] VALID_ANSWERS = "ア イ ウ エ".split(" ");
@@ -39,7 +39,7 @@ public class AnswerPaper {
 			// or: "問 1 ウ  "
 			line = line.trim();
 			String[] splitted = line.split("\\s+");
-			if(!(splitted[0].equals("問"))) continue;
+			if(!splitted[0].equals("問")) continue;
 
 			int qnum = 0;
 			String ans = null;
@@ -84,7 +84,7 @@ public class AnswerPaper {
 	public String getAsText() {
 		return asText;
 	}
-	
+
 	public ArrayList<String> getAsList() {
 		return asList;
 	}

@@ -1,13 +1,14 @@
 package jp.tnu.aptest;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Test;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.fail;
 
 public class AnswerStatisticsTest {
 
@@ -26,10 +27,10 @@ public class AnswerStatisticsTest {
 		stat.addAnswer(p1);
 		stat.addAnswer(p2);
 		
-		Map<String, Integer> actural = stat.collectAllAnswersCount();
-		assertArrayEquals(expected.entrySet().toArray(),actural.entrySet().toArray());
+		Map<String, Integer> actual = stat.collectAllAnswersCount();
+		assertArrayEquals(expected.entrySet().toArray(),actual.entrySet().toArray());
 	}	
-	
+
 	public AnswerPaper createInstance(String testTargetFileName) {
 		AnswerPaper coll = null;
 		String pdfPath = getClass().getResource(testTargetFileName).getPath();

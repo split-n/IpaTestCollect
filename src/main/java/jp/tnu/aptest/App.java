@@ -6,13 +6,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.Map.Entry;
 
 
 public class App 
 {
     public static void main( String[] args ) {
-    	List<String> urls= new ArrayList<>();; 
+    	List<String> urls= new ArrayList<>();
     	if(args.length != 0) { // use pdf url list if arg present
     		try{
     			urls = parseUrlsFromFilePath(args[0]);
@@ -32,7 +31,7 @@ public class App
     	WebClient wc = new WebClient();
     	AnswerStatistics answers = new AnswerStatistics();
 	    for (String url : urls) {
-	    	try(InputStream file = wc.getStream(url);){
+	    	try(InputStream file = wc.getStream(url)){
 			answers.addAnswer(new AnswerPaper(file));
     		}catch(IOException e) {
     			System.out.println("failed to analyze : " + url);

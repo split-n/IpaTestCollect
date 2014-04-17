@@ -3,11 +3,8 @@ package jp.tnu.aptest;
 import java.util.*;
 
 public class AnswerStatistics {
-	private List<AnswerPaper> answers;
-	public AnswerStatistics() {
-		this.answers = new ArrayList<>();
-	}
-
+	private List<AnswerPaper> answers = new ArrayList<>();
+	
 	public void addAnswer(AnswerPaper paper) {
 		answers.add(paper);
 	}
