@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 
-public class App 
+public class CLIApp
 {
     public static void main( String[] args ) {
     	List<String> urls= new ArrayList<>();
@@ -39,9 +39,14 @@ public class App
 	    	System.out.println("use : " + url);
     	}
 
-	    TreeMap<String, Integer> collected = new TreeMap<>(answers.collectAllAnswersCount()); 
+	    TreeMap<String, Integer> collected = new TreeMap<>(answers.collectAllAnswersCount());
+		int sum = 0;
+		for(int part : collected.values()){
+			sum += part;
+		}
 	    for(Map.Entry<String, Integer> result : collected.entrySet()) {
-	    	System.out.println(result.getKey() + " => " + result.getValue() + "回");
+	    	System.out.print(result.getKey() + " => " + result.getValue() + "回/");
+			System.out.println(String.format("%.1f",(double)result.getValue()/sum*100) + "%");
 	    }
     }
     
